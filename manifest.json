@@ -1,6 +1,6 @@
 {
     "name": "Felton Fall Classic",
-    "short_name": "D3L",
+    "short_name": "Felton Fall Classic",
     "start_url": "index.html",
     "scope": "./",
     "display": "standalone",
