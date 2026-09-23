@@ -1,0 +1,24 @@
+{
+    "name": "Felton Fall Classic",
+    "short_name": "D3L",
+    "start_url": "index.html",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#010520",
+    "theme_color": "#010520",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "https://raw.githubusercontent.com/KSWENSON2/Images/refs/heads/main/FFC_Loader.jpeg",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "https://raw.githubusercontent.com/KSWENSON2/Images/refs/heads/main/FFC_Loader.jpeg",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
