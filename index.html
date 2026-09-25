@@ -362,11 +362,11 @@
   ======================== -->
   <div id="inapp-overlay">
     <img src="FFC_Icon.png" class="logo" alt="Felton Fall Classic">
-    <h2>Sorry!<br>Open in your browser</h2>
-    <p>Felton Fall Classic site doesn't work inside the Facebook / Instagram browser.<br><br>Please open it in your normal browser.</p>
+    <h2>Sorry!<br>Please open in your browser</h2>
+    <p>Felton Fall Classic site doesn't work within the Facebook / Instagram browser.<br><br>Please open it in your normal browser.</p>
     <a id="inapp-open" class="open-btn" href="#">Open in Browser</a>
     <div id="inapp-ios" class="ios-steps" style="display:none;">
-      Tap the <strong>•••</strong> button in the corner, then choose <strong>“Open in external browser”</strong>.
+      Tap the <strong>•••</strong> button in the corner, then choose <strong>“Open in external browser”</strong> <br><br> Or <strong>Copy link</strong> below and paste it into your browser.
     </div>
     <button id="inapp-copy" class="copy-btn" type="button">Copy link</button>
     <div id="inapp-url" class="url"></div>
@@ -534,13 +534,21 @@ function setupInstallPrompt() {
         return;
     }
 
+    // Only prompt once per device — if it was dismissed/installed before, stay hidden.
+    if (installDismissed()) {
+        installBanner.style.display = 'none';
+        iosInstallBanner.style.display = 'none';
+        return;
+    }
+
     // Platform-specific handling for non-desktop devices
     if (isIOS()) {
         iosInstallBanner.style.display = 'block'; // Show iOS banner with instructions
 
-        // Close button (X): Hide the banner
+        // Close button (X): Hide the banner and remember not to show it again.
         iosCloseButton.addEventListener('click', () => {
             iosInstallBanner.style.display = 'none';
+            markInstallDismissed();
         });
     } else {
         // Android/PC: Show install banner when beforeinstallprompt fires
@@ -555,6 +563,7 @@ function setupInstallPrompt() {
     installButton.addEventListener('click', () => {
         if (deferredPrompt) {
             installBanner.style.display = 'none';
+            markInstallDismissed();
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
@@ -570,7 +579,18 @@ function setupInstallPrompt() {
     // Dismiss button for Android/PC banner
     dismissButton.addEventListener('click', () => {
         installBanner.style.display = 'none';
+        markInstallDismissed();
     });
+}
+
+// Remembers (per device) that the user has already seen the install prompt, so it
+// only appears once. Wrapped in try/catch since some in-app browsers block storage.
+function installDismissed() {
+    try { return localStorage.getItem('ffcInstallDismissed') === '1'; }
+    catch (e) { return false; }
+}
+function markInstallDismissed() {
+    try { localStorage.setItem('ffcInstallDismissed', '1'); } catch (e) {}
 }
 
 document.addEventListener('DOMContentLoaded', () => {
