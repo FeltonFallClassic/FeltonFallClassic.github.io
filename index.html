@@ -177,7 +177,7 @@
     height: 45px;
     margin: 0 8px 0 3px;
     vertical-align: middle;
-    outline: 2px solid #df4100;
+    outline: 1px solid #df4100;
     border-radius: 8px;
     box-shadow: inset -3px -2px 3px 1px rgba(0, 0, 0, 0.3);
     object-fit: contain;
@@ -304,7 +304,7 @@
       z-index: 2147483647;
       background: #0c0f16;
       color: #fff;
-      padding: 20px 15px;
+      padding: 15px 15px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -312,7 +312,7 @@
       font-family: Arial, sans-serif;
     }
     #inapp-overlay.show { display: flex; }
-    #inapp-overlay img.logo { width: 96px; height: 96px; border-radius: 16px; margin-bottom: 18px; object-fit: contain; }
+    #inapp-overlay img.logo { width: 96px; height: 96px; border-radius: 16px; margin-bottom: 18px; object-fit: contain; outline: 1px solid #df4100; }
     #inapp-overlay h2 { font-size: 22px; margin: 0 0 10px; }
     #inapp-overlay p { font-size: 16px; line-height: 1.5; max-width: 460px; margin: 0 0 16px; color: #d7dce4; }
     #inapp-overlay .open-btn {
@@ -347,11 +347,11 @@
       border: 2px solid #df4100;
       border-radius: 10px;
       padding: 10px 18px;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 700;
       cursor: pointer;
     }
-    #inapp-overlay .url { font-size: 12px; color: #7d8ba3; margin-top: 14px; word-break: break-all; max-width: 460px; }
+    #inapp-overlay .url { font-size: 13px; color: #df4100; margin-top: 14px; word-break: break-all; max-width: 460px; }
   </style>
 </head>
 
@@ -362,11 +362,11 @@
   ======================== -->
   <div id="inapp-overlay">
     <img src="FFC_Icon.png" class="logo" alt="Felton Fall Classic">
-    <h2>Open in your browser</h2>
-    <p>The Felton Fall Classic app doesn't work inside the Facebook / Instagram browser.<br> Please open it in your normal browser.</p>
+    <h2>Sorry!<br>Open in your browser</h2>
+    <p>Felton Fall Classic site doesn't work inside the Facebook / Instagram browser.<br><br>Please open it in your normal browser.</p>
     <a id="inapp-open" class="open-btn" href="#">Open in Browser</a>
     <div id="inapp-ios" class="ios-steps" style="display:none;">
-      On iPhone: tap the <strong>•••</strong> button at the corner, then choose <strong>“Open in external browser”</strong>.
+      Tap the <strong>•••</strong> button in the corner, then choose <strong>“Open in external browser”</strong>.
     </div>
     <button id="inapp-copy" class="copy-btn" type="button">Copy link</button>
     <div id="inapp-url" class="url"></div>
